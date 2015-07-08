@@ -36,7 +36,3 @@ echo "Beginning Sync"
 
 GR='\033[1;32m'; NC='\033[0m';
 printf "${GR}Sync to ${S3} complete.${NC}\n"
-
-#Find all the site* or db* prefixed files in /var/www/_backups that were last modified more than 5 days ago and remove them.
-#find /var/www/_backups/site* -mtime +5 -exec rm {} \;
-#find /var/www/_backups/db* -mtime +5 -exec rm {} \;
