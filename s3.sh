@@ -19,20 +19,13 @@ DB_PW="x83rh93rh"
 ##### YOU DO NOT HAVE TO EDIT BELOW THIS LINE #####
 
 DATE=`date +%d%m%y%H%M`
-echo "Creating Directories";
 mkdir -p /srv/S3/$DATE;
-
-sleep 2
-echo "Starting Database Backup";
+sleep 1
 mysqldump -u $DB_USER -p${DB_PW} $DB | gzip > /srv/S3/$DATE/db_${SITE}_${DB}_${DATE}.gz
-
-sleep 3
-echo "Compressing Site Code"
+sleep 1
 tar czf /srv/S3/$DATE/code_${SITE}_${DATE}.tar.gz -C / ${SOURCE}
-
-sleep 5
-echo "Beginning Sync"
+sleep 1
+find /srv/S3 -mindepth 1 -maxdepth 1 -type d -mtime +1 | xargs rm -rf
 /usr/local/bin/aws s3 sync /srv/S3/ ${S3}
-
 GR='\033[1;32m'; NC='\033[0m';
 printf "${GR}Sync to ${S3} complete.${NC}\n"
