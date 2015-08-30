@@ -14,7 +14,7 @@ SITE="rusangu"
 SOURCE="srv/acms_app"
 DB="acms"
 DB_USER="root"
-DB_PW="O2O0t7gK"
+DB_PW="pw"
 
 ##### YOU DO NOT HAVE TO EDIT BELOW THIS LINE #####
 
